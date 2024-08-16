@@ -1,0 +1,66 @@
+let textArea = document.querySelector(".text-area");
+let mensaje = document.querySelector(".mensaje");
+const h2 = document.querySelector(".sin-mensaje h2");
+const p = document.querySelector(".sin-mensaje p");
+
+
+
+// La letra "e" es convertida para "enter"
+// La letra "i" es convertida para "imes"
+// La letra "a" es convertida para "ai"
+// La letra "o" es convertida para "ober"
+// La letra "u" es convertida para "ufat"
+
+
+
+function btnEncriptar (){
+    const textoEncriptado = encriptar(textArea.value)
+    mensaje.value = textoEncriptado
+    textArea.value = "";
+    mensaje.style.backgroundImage = "none";
+    ocultarMensaje();
+}
+
+function btnDesencriptar(){
+    const textoEncriptado = desencriptar(textArea.value)
+    mensaje.value = textoEncriptado
+    textArea.value = "";
+    mensaje.style.backgroundImage = "none";
+}
+
+function btnCopiar(){
+    const textcopiado = mensaje.value
+    textArea.value = textcopiado
+    mensaje.value = "";
+    mensaje.style.backgroundImage = "";
+}
+
+// Función para ocultar el h2 y p
+function ocultarMensaje() {
+    h2.style.display = "none";
+    p.style.display = "none";
+}
+
+function encriptar(stringEncriptada){
+    let matrizCodigo = [["e","enter"],["i","imes"],["a","ai"],["o","ober"],["u","ufat"]];
+    stringEncriptada = stringEncriptada
+
+    for(let i=0; i<matrizCodigo.length; i++){
+        if(stringEncriptada.includes(matrizCodigo[i][0])){
+            stringEncriptada=stringEncriptada.replaceAll(matrizCodigo[i][0],matrizCodigo[i][1])
+        }
+    }
+    return stringEncriptada
+}
+
+function desencriptar(stringDesencriptada){
+    let matrizCodigo = [["e","enter"],["i","imes"],["a","ai"],["o","ober"],["u","ufat"]];
+    stringDesencriptada = stringDesencriptada
+
+    for(i = 0; i < matrizCodigo.length; i++){
+        if(stringDesencriptada.includes(matrizCodigo[i][1])){
+            stringDesencriptada = stringDesencriptada.replaceAll(matrizCodigo[i][1],matrizCodigo[i][0])
+        }
+    }
+    return stringDesencriptada
+}
