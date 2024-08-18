@@ -99,15 +99,15 @@ main{
 
 .copiar{
     border: 1px solid var(--color-Primario);
-    border-radius: 24px;
+    border-radius: 1.5em;
     color: var(--color-Primario);
     cursor: pointer;
     height: 9%;
-    width: 50%;
+    width: 40%;
     font-size: 0.8rem;
     position: absolute;
-    top: 91%;
-    left: 25%;
+    top: 20.9em;
+    left: 17.5%;
 
 }
 
@@ -127,7 +127,7 @@ main{
     display: flex;
     position: absolute;
     top:68%;
-    left:22%;
+    left:17%;
     color: #343A40;
     text-align: center;
     flex-direction: column;
@@ -151,7 +151,7 @@ main{
 
 
  /*responsive para tablets */
- @media (max-width : 768px) {
+ @media (768px <= width <= 1024px) {
     
     .logo{
         padding-top: 5%;
@@ -211,6 +211,7 @@ main{
         border-radius: 24px;
         padding: 6%;
         box-shadow: 0px 8px 20px 3px rgba(229, 229, 229);
+        background-image: none;
     }
 
     .sin-mensaje h2{
@@ -224,4 +225,99 @@ main{
     }
 
 
+ }
+
+
+ /*responsive para mobil*/
+ @media (max-width : 767px) {
+
+    .logo{
+        width: 30%;
+        margin-top: 5%;
+    }
+
+    main{
+        justify-content: center;
+        width: 100%;
+        flex-direction: column;
+        margin-top: 4em;
+    }
+
+    .text-area{
+        height: 450px;
+        width: 110%;
+        margin-bottom: 2%;
+    }
+
+    .recomendacion{
+        padding-top: 2%;
+        font-size: 12px;
+    }
+
+    .botones{
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 5%;
+    }
+
+    .btn-encriptar{
+        height: 70px;
+        width: 100%;
+        margin-bottom: 20px;
+
+    }
+    
+    .btn-desencriptar{
+        height: 70px;
+        margin-left:0px ;
+        width: 100%;
+    }
+
+    .sin-mensaje{
+        background-color: var(--color-terciario);
+        width: 98%;
+        margin: 0%;
+        left: 1.5%;
+        border-radius: 32px;
+        padding: 10%;
+        box-shadow: 0px 8px 20px 3px rgba(229, 229, 229);
+        margin-top: 44px;
+    }
+
+    .sin-mensaje h2{
+        font-size: 24px;
+    }
+
+    .sin-mensaje p{
+        font-size: 16px;
+    }
+
+    
+    .mensaje{
+        box-shadow: 0px 24px 32px -8px rgba(229, 229, 229);
+        width: 98%;
+        left: 1.5%;
+        margin: 0 auto;
+        padding-bottom: 30px;
+        background-image: none;
+        position: absolute;
+    }
+
+    .copiar{
+        height: 70px;
+        position: fixed;
+        width: 60%;
+        height: 6%;
+        margin-left: 5.9%;
+        top: 92.5%;
+        padding: 0%;
+    }
+
+    .mensaje,
+    .copiar{
+        display: none;
+    }
+
+  
  }

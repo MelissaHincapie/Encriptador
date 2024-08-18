@@ -4,7 +4,8 @@ const h2 = document.querySelector(".sin-mensaje h2");
 const p = document.querySelector(".sin-mensaje p");
 
 //Definición d media queries
-const mediaQuery = window.matchMedia('(min-width: 768px)')
+const tabletMediaQuery = window.matchMedia('(min-width: 768px) and (max-width: 1023px)');
+const mobileMediaQuery = window.matchMedia('(max-width:767px)');
 
 // La letra "e" es convertida para "enter"
 // La letra "i" es convertida para "imes"
@@ -45,7 +46,7 @@ function btnEncriptar (){
     textArea.value = "";
     mensaje.style.backgroundImage = "none";
     ocultarMensaje();
-    mostrarMensaje();
+    ajusteContenido();
 }
 
 function btnDesencriptar(){
@@ -71,16 +72,20 @@ function ocultarMensaje() {
 
 //mediaQuery para mostra u ocultar el contenido
 
-function mostrarMensaje(){
-    if(mediaQuery.matches){
+function ajusteContenido(){
+    if(tabletMediaQuery.matches){
         mensaje.style.display = 'block';
         document.querySelector('.copiar').style.display = 'inline-block';
-        mensaje.style.backgroundImage = 'none';
-    } else{
+    }else if(mobileMediaQuery.matches){
+            mensaje.style.display = 'block';
+            document.querySelector('.copiar').style.display = 'inline-block';  
+    }else{
         mensaje.style.display = 'none';
-        document.querySelector('copiar').style.display = 'disable';
+        document.querySelector('copiar').style.display = 'none';
     }
 }
 
 //Escuchar los cambios en la media query
-mediaQuery.addEventListener('change', mostrarMensaje);
+tabletMediaQuery.addEventListener('change', ajusteContenido);
+mobileMediaQuery.addEventListener('change', ajusteContenido);
+
