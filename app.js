@@ -3,10 +3,6 @@ let mensaje = document.querySelector(".mensaje");
 const h2 = document.querySelector(".sin-mensaje h2");
 const p = document.querySelector(".sin-mensaje p");
 
-//Definición d media queries
-const tabletMediaQuery = window.matchMedia('(min-width: 768px) and (max-width: 1023px)');
-const mobileMediaQuery = window.matchMedia('(max-width:767px)');
-
 // La letra "e" es convertida para "enter"
 // La letra "i" es convertida para "imes"
 // La letra "a" es convertida para "ai"
@@ -44,8 +40,6 @@ function btnEncriptar (){
     const textoEncriptado = encriptar(textArea.value)
     mensaje.value = textoEncriptado
     textArea.value = "";
-    mensaje.style.backgroundImage = "none";
-    ocultarMensaje();
     ajusteContenido();
 }
 
@@ -53,7 +47,6 @@ function btnDesencriptar(){
     const textoEncriptado = desencriptar(textArea.value)
     mensaje.value = textoEncriptado
     textArea.value = "";
-    mensaje.style.backgroundImage = "none";
 }
 
 function btnCopiar(){
@@ -62,30 +55,15 @@ function btnCopiar(){
     mensaje.value = "";
 }
 
-//ocultar el mensaje "Ningun mensaje fue encontrado"
-function ocultarMensaje() {
+
+//Mostrar u ocultar información
+function ajusteContenido(){
+    mensaje.style.display = 'block';
+    document.querySelector('.copiar').style.display = 'inline-block';
+    mensaje.style.backgroundImage = 'none';
     h2.style.display = "none";
     p.style.display = "none";
     document.querySelector('.sin-mensaje').style.display = 'none';
 }
 
-
-//mediaQuery para mostra u ocultar el contenido
-
-function ajusteContenido(){
-    if(tabletMediaQuery.matches){
-        mensaje.style.display = 'block';
-        document.querySelector('.copiar').style.display = 'inline-block';
-    }else if(mobileMediaQuery.matches){
-            mensaje.style.display = 'block';
-            document.querySelector('.copiar').style.display = 'inline-block';  
-    }else{
-        mensaje.style.display = 'none';
-        document.querySelector('copiar').style.display = 'none';
-    }
-}
-
-//Escuchar los cambios en la media query
-tabletMediaQuery.addEventListener('change', ajusteContenido);
-mobileMediaQuery.addEventListener('change', ajusteContenido);
 
